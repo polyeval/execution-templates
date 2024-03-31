@@ -1,0 +1,35 @@
+targets:
+  cpp:
+    cwd: C++
+    main: src/example.cpp
+    run: g++ -std=c++23 src/example.cpp -o example && ./example
+  csharp:
+    cwd: C#
+    main: src/Example.cs
+    symlink: 
+      - example.csproj 
+    run: dotnet run --disable-build-servers
+  go:
+    cwd: Go
+    main: src/example.go
+    run: go run src/example.go
+  java:
+    cwd: Java
+    main: src/Example.java
+    run: javac src/Example.java -d ./ && java Example
+  javascript:
+    cwd: JavaScript
+    main: src/example.js
+    run: node src/example.js
+  php:
+    cwd: PHP
+    main: src/example.php
+    run: php src/example.php
+  python:
+    cwd: Python
+    main: src/example.py
+    run: python3.12 src/example.py
+  ruby:
+    cwd: Ruby
+    main: src/example.rb
+    run: ruby src/example.rb
