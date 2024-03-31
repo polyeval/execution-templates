@@ -33,3 +33,52 @@ targets:
     cwd: Ruby
     main: src/example.rb
     run: ruby src/example.rb
+
+  coffeescript:
+    cwd: CoffeeScript
+    main: src/example.coffee
+    run: coffee src/example.coffee
+  dart:
+    cwd: Dart
+    main: src/example.dart
+    run: dart src/example.dart
+  elixir:
+    cwd: Elixir
+    main: src/example.ex
+    run: ELIXIR_ERL_OPTIONS="+fnu" elixir src/example.ex
+  groovy:
+    cwd: Groovy
+    main: src/example.groovy
+    run: groovy src/example.groovy
+  kotlin:
+    cwd: Kotlin
+    main: src/Example.kt
+    run: kotlinc src/Example.kt && kotlin ExampleKt
+  objectivec:
+    cwd: Objective-C
+    main: src/example.m
+    run: clang -fobjc-nonfragile-abi -fobjc-arc -fobjc-runtime=gnustep-2.0 -fblocks src/example.m -lgnustep-base -lobjc -o example && ./example
+  perl:
+    cwd: Perl
+    main: src/example.pl
+    run: perl src/example.pl
+  rust:
+    cwd: Rust
+    main: src/example.rs
+    run: rustc src/example.rs && ./example
+  scala:
+    cwd: Scala
+    main: src/Example.scala
+    run: scalac src/Example.scala && scala Example
+  swift:
+    cwd: Swift
+    main: src/example.swift
+    run: swiftc src/example.swift && ./example
+  typescript:
+    cwd: TypeScript
+    main: src/example.ts
+    symlink:
+      - node_modules
+      - tsconfig.json
+    prepare: pnpm install
+    run: tsc && node dist/example.js

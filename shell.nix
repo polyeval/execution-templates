@@ -1,6 +1,8 @@
 let
   nixpkgs = fetchTarball "https://github.com/NixOS/nixpkgs/tarball/nixos-23.11";
+  nixpkgs_old = fetchTarball "https://github.com/NixOS/nixpkgs/tarball/nixos-23.05";
   pkgs = import nixpkgs { config = {}; overlays = []; };
+  pkgs_old = import nixpkgs_old { config = {}; overlays = []; };
 in
 pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
   buildInputs = [
@@ -33,5 +35,39 @@ pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
 
     # Ruby
     pkgs.ruby_3_2
+
+
+    # CoffeeScript
+    pkgs.coffeescript
+
+    # Dart
+    pkgs.dart
+    
+    # Elixir
+    pkgs.elixir_1_16
+
+    # Groovy
+    pkgs.groovy
+
+    # Kotlin
+    pkgs.kotlin
+
+    # Objective-C
+    pkgs.gnustep.base pkgs.gnustep.libobjc
+
+    # Perl
+    pkgs.perl
+
+    # Rust
+    pkgs.rustc
+
+    # Scala
+    pkgs.scala_3
+
+    # Swift
+    pkgs_old.swiftPackages.swift pkgs_old.swiftPackages.Foundation
+
+    # TypeScript
+    pkgs.typescript
   ];
 }
