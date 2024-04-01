@@ -136,7 +136,7 @@ targets:
   ocaml:
     cwd: OCaml
     main: src/example.ml
-    run: ocaml src/example.ml
+    run: utop src/example.ml
   purescript:
     cwd: PureScript
     main: src/example.purs

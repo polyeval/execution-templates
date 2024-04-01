@@ -102,7 +102,7 @@ pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
     pkgs.nim2
 
     # OCaml
-    pkgs.ocaml
+    pkgs.ocaml pkgs.ocamlPackages.utop pkgs.ocamlPackages.containers
     
     # PureScript
     pkgs.purescript
