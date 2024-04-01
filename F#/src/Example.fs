@@ -43,5 +43,5 @@ let p_e_option (f0 : 'a -> string) (opt : 'a option) : string =
 
 $$code$$
 
-let p_e_out = p_e_entry ()
+let p_e_out = p_e_entry
 System.IO.File.WriteAllText("result.out", p_e_out)
