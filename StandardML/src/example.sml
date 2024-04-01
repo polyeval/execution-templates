@@ -77,7 +77,7 @@ fun p_e_createSdict (lst: (string * 'a) list) : (string, 'a) HashTable.hash_tabl
 $$code$$
 
 let
-    val p_e_out = p_e_entry ()
+    val p_e_out = p_e_entry
 in
     let
         val oc = TextIO.openOut "result.out"
