@@ -63,5 +63,5 @@ $$code$$
 
 program : Process -> IO ()
 program process =
-    let p_e_out = p_e_entry ()
+    let p_e_out = p_e_entry
     in File.writeContentsTo "result.out" p_e_out

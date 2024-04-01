@@ -63,5 +63,5 @@ $$code$$
 
 main :: IO ()
 main = do
-    let p_e_out = p_e_entry ()
+    let p_e_out = p_e_entry
     writeFile "result.out" p_e_out

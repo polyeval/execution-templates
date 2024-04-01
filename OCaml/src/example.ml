@@ -44,7 +44,7 @@ let p_e_option (f0 : 'a -> string) (opt : 'a option) : string =
 $$code$$
 
 let () =
-    let p_e_out = p_e_entry ()
+    let p_e_out = p_e_entry
     in
     let oc = open_out "result.out" in
     Printf.fprintf oc "%s" p_e_out;

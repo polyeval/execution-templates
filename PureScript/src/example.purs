@@ -71,5 +71,5 @@ $$code$$
 
 main :: Effect Unit
 main =
-    let p_e_out = p_e_entry unit
+    let p_e_out = p_e_entry
     in writeTextFile UTF8 "result.out" p_e_out
