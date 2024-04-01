@@ -12,7 +12,7 @@ pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
     
     # Packages for each language are listed below. You can delete any if you don't need them.
 
-    # C#
+    # C#, F#
     pkgs.dotnet-sdk_8
     
     # C++
@@ -24,7 +24,7 @@ pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
     # Java
     pkgs.jdk21
 
-    # JavaScript
+    # JavaScript, PureScript, ReScript
     pkgs.nodejs_21 pkgs.corepack_21
 
     # PHP
@@ -69,5 +69,42 @@ pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
 
     # TypeScript
     pkgs.typescript
+
+
+    # Clojure
+    pkgs.clojure
+
+    # Crystal
+    pkgs.crystal
+
+    # D
+    pkgs.dmd
+
+    # Elm
+    pkgs.elmPackages.elm
+
+    # Erlang
+    pkgs.erlang_26
+
+    # Hack
+    (builtins.getFlake "git+https://github.com/facebook/hhvm.git?submodules=1&shallow=1&ref=refs/tags/HHVM-4.164.0").packages.x86_64-linux.default
+
+    # Haskell
+    pkgs.haskell.compiler.ghc981
+
+    # Julia
+    pkgs.julia
+
+    # Lua
+    pkgs.lua5_4_compat
+
+    # Nim
+    pkgs.nim2
+
+    # OCaml
+    pkgs.ocaml
+
+    # Racket
+    pkgs.racket-minimal
   ];
 }

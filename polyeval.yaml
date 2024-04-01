@@ -82,3 +82,81 @@ targets:
       - tsconfig.json
     prepare: pnpm install
     run: tsc && node dist/example.js
+  
+  clojure:
+    cwd: Clojure
+    main: src/example.clj
+    run: clojure -M src/example.clj
+  crystal:
+    cwd: Crystal
+    main: src/example.cr
+    run: crystal run src/example.cr
+  d:
+    cwd: D
+    main: src/example.d
+    run: dmd src/example.d && ./example
+  elm:
+    cwd: Elm
+    main: src/Example.elm
+    symlink: 
+      - node_modules
+      - elm.json
+    prepare: pnpm install
+    run: ./node_modules/.bin/elm-cli run src/Example.elm
+  erlang:
+    cwd: Erlang
+    main: src/example.erl
+    run: erlc src/example.erl && erl -noshell -s example main -s init stop
+  fsharp:
+    cwd: F#
+    main: src/Example.fs
+    symlink: 
+      - example.fsproj
+    run: dotnet run --disable-build-servers
+  hack:
+    cwd: Hack
+    main: src/example.hack
+    run: hhvm src/example.hack
+  haskell:
+    cwd: Haskell
+    main: src/example.hs
+    run: ghc src/example.hs -outputdir out -o example -fprint-potential-instances && ./example
+  julia:
+    cwd: Julia
+    main: src/example.jl
+    run: julia src/example.jl
+  lua:
+    cwd: Lua
+    main: src/example.lua
+    run: lua src/example.lua
+  nim:
+    cwd: Nim
+    main: src/example.nim
+    run: nim c -o:example src/example.nim && ./example
+  ocaml:
+    cwd: OCaml
+    main: src/example.ml
+    run: ocaml src/example.ml
+  purescript:
+    cwd: PureScript
+    main: src/example.purs
+    symlink:
+      - .spago
+      - node_modules
+      - output
+      - spago.yaml
+      - spago.lock
+    prepare: pnpm install && ./node_modules/.bin/spago install
+    run: ./node_modules/.bin/spago run -m Example
+  racket:
+    cwd: Racket
+    main: src/example.rkt
+    run: racket src/example.rkt
+  rescript:
+    cwd: ReScript
+    main: src/example.res
+    symlink:
+      - node_modules
+      - rescript.json
+    prepare: pnpm install
+    run: ./node_modules/.bin/rescript && node src/example.res.mjs
