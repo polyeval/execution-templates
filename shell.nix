@@ -103,6 +103,9 @@ pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
 
     # OCaml
     pkgs.ocaml
+    
+    # PureScript
+    pkgs.purescript
 
     # Racket
     pkgs.racket-minimal
