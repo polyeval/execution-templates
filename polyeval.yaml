@@ -184,6 +184,7 @@ targets:
   reasonml:
     cwd: ReasonML
     main: src/example.re
+    run: refmt src/example.re -p ml > example.ml && ocaml example.ml
   standardml:
     cwd: StandardML
     main: src/example.sml
