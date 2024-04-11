@@ -116,7 +116,7 @@ pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
     pkgs.guile
 
     # Emacs Lisp
-    pkgs.emacs29
+    pkgs.emacs
 
     # Haxe
     pkgs.haxe pkgs.neko
