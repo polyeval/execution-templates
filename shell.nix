@@ -1,6 +1,5 @@
 let
-  nixpkgs = fetchTarball "https://github.com/NixOS/nixpkgs/tarball/nixos-23.11";
-  nixpkgs_old = fetchTarball "https://github.com/NixOS/nixpkgs/tarball/nixos-23.05";
+  nixpkgs = fetchTarball "https://github.com/NixOS/nixpkgs/tarball/nixos-unstable";
   pkgs = import nixpkgs { config = {}; overlays = []; };
   pkgs_old = import nixpkgs_old { config = {}; overlays = []; };
 in
@@ -22,7 +21,7 @@ pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
     pkgs.go
 
     # Java
-    pkgs.jdk21
+    pkgs.jdk22
 
     # JavaScript
     pkgs.nodejs_21 pkgs.corepack_21
@@ -34,7 +33,7 @@ pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
     pkgs.python312
 
     # Ruby
-    pkgs.ruby_3_2
+    pkgs.ruby_3_3
 
 
     # CoffeeScript
@@ -44,7 +43,7 @@ pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
     pkgs.dart
     
     # Elixir
-    pkgs.elixir_1_16
+    pkgs.elixir
 
     # Groovy
     pkgs.groovy
@@ -65,7 +64,7 @@ pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
     pkgs.scala_3
 
     # Swift
-    pkgs_old.swiftPackages.swift pkgs_old.swiftPackages.Foundation
+    pkgs.swift pkgs.swiftPackages.Foundation
 
     # TypeScript
     pkgs.typescript
