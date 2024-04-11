@@ -1,5 +1,5 @@
 let
-  nixpkgs = fetchTarball "https://github.com/NixOS/nixpkgs/tarball/nixos-23.11";
+  nixpkgs = fetchTarball "https://github.com/NixOS/nixpkgs/tarball/nixos-unstable";
   pkgs = import nixpkgs { config = {}; overlays = []; };
 in
 pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
@@ -20,7 +20,7 @@ pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
     pkgs.go
 
     # Java
-    pkgs.jdk21
+    pkgs.jdk22
 
     # JavaScript
     pkgs.nodejs_21 pkgs.corepack_21
@@ -32,6 +32,6 @@ pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
     pkgs.python312
 
     # Ruby
-    pkgs.ruby_3_2
+    pkgs.ruby_3_3
   ];
 }
