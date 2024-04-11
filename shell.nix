@@ -1,7 +1,6 @@
 let
   nixpkgs = fetchTarball "https://github.com/NixOS/nixpkgs/tarball/nixos-unstable";
   pkgs = import nixpkgs { config = {}; overlays = []; };
-  pkgs_old = import nixpkgs_old { config = {}; overlays = []; };
 in
 pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
   buildInputs = [
