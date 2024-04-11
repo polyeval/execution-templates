@@ -1,6 +1,7 @@
 let
   nixpkgs = fetchTarball "https://github.com/NixOS/nixpkgs/tarball/nixos-unstable";
   pkgs = import nixpkgs { config = {}; overlays = []; };
+  pkgs_old = import nixpkgs_old { config = {}; overlays = []; };
 in
 pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
   buildInputs = [
@@ -33,5 +34,39 @@ pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
 
     # Ruby
     pkgs.ruby_3_3
+
+
+    # CoffeeScript
+    pkgs.coffeescript
+
+    # Dart
+    pkgs.dart
+    
+    # Elixir
+    pkgs.elixir
+
+    # Groovy
+    pkgs.groovy
+
+    # Kotlin
+    pkgs.kotlin
+
+    # Objective-C
+    pkgs.gnustep.base pkgs.gnustep.libobjc
+
+    # Perl
+    pkgs.perl
+
+    # Rust
+    pkgs.rustc
+
+    # Scala
+    pkgs.scala_3
+
+    # Swift
+    pkgs.swift pkgs.swiftPackages.Foundation
+
+    # TypeScript
+    pkgs.typescript
   ];
 }
