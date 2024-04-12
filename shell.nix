@@ -88,7 +88,7 @@ pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
     (builtins.getFlake "git+https://github.com/facebook/hhvm.git?submodules=1&shallow=1&ref=refs/tags/HHVM-4.172.1").packages.x86_64-linux.default
 
     # Haskell
-    pkgs.haskellPackages.ghc_9_8_2
+    pkgs.haskell.compiler.ghc98
 
     # Julia
     pkgs.julia
