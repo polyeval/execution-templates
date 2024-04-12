@@ -23,7 +23,7 @@ pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
     pkgs.jdk22
 
     # JavaScript
-    pkgs.nodejs_21 pkgs.corepack_21
+    pkgs.nodejs_21 pkgs.nodePackages.pnpm
 
     # PHP
     pkgs.php83
