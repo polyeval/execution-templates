@@ -160,3 +160,40 @@ targets:
       - rescript.json
     prepare: pnpm install
     run: ./node_modules/.bin/rescript && node src/example.res.mjs
+  
+  commonlisp:
+    cwd: CommonLisp
+    main: src/example.lisp
+    run: sbcl --script src/example.lisp
+  emacslisp:
+    cwd: EmacsLisp
+    main: src/example.el
+    run: emacs --script src/example.el
+  guilescheme:
+    cwd: GuileScheme
+    main: src/example.scm
+    run: guile src/example.scm
+  haxe:
+    cwd: Haxe
+    main: src/Example.hx
+    run: haxe -p ./src -m Example.hx --neko example.n && neko example.n
+  raku:
+    cwd: Raku
+    main: src/example.raku
+    run: raku src/example.raku
+  reasonml:
+    cwd: ReasonML
+    main: src/example.re
+    run: refmt src/example.re -p ml > example.ml && ocaml example.ml
+  standardml:
+    cwd: StandardML
+    main: src/example.sml
+    symlink:
+      - example.mlb
+    run: mlton -output example example.mlb && ./example
+  visualbasic:
+    cwd: VisualBasic
+    main: src/Example.vb
+    symlink:
+      - example.vbproj
+    run: dotnet run --disable-build-servers

@@ -10,7 +10,7 @@ pkgs.mkShell.override { stdenv = pkgs.llvmPackages_18.libcxxStdenv; } {
     
     # Packages for each language are listed below. You can delete any if you don't need them.
 
-    # C#, F#
+    # C#, F#, Visual Basic
     pkgs.dotnet-sdk_8
     
     # C++
@@ -107,5 +107,27 @@ pkgs.mkShell.override { stdenv = pkgs.llvmPackages_18.libcxxStdenv; } {
 
     # Racket
     pkgs.racket
+
+
+    # Common Lisp
+    pkgs.sbcl
+
+    # Guile Scheme
+    pkgs.guile
+
+    # Emacs Lisp
+    pkgs.emacs
+
+    # Haxe
+    pkgs.haxe pkgs.neko
+    
+    # Raku
+    pkgs.rakudo
+    
+    # Standard ML
+    pkgs.mlton
+
+    # ReasonML
+    pkgs.ocamlPackages.reason
   ];
 }
