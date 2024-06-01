@@ -20,10 +20,7 @@ string p_e_escapeString(const string& s) {
         if (c == '\t') return "\\t";
         return string(1, c);
     };
-    // Commented code will be availabe in g++14
-    // vector<string> res = s | views::transform(p_e_escape_char) | ranges::to<vector<string>>();
-    auto tmp = s | views::transform(p_e_escape_char);
-    vector<string> res = vector<string>(tmp.begin(), tmp.end());
+    vector<string> res = s | views::transform(p_e_escape_char) | ranges::to<vector<string>>();
     return ranges::fold_left(res | views::join_with(""sv), string(), plus());
 }
 
@@ -50,9 +47,7 @@ function<string(const string&)> p_e_string() {
 template <typename V>
 function<string(const vector<V>&)> p_e_list(function<string(const V&)> f0) {
     return [f0 = move(f0)](const vector<V>& lst) -> string {
-        // vector<string> vs = lst | views::transform(f0) | ranges::to<vector<string>>();
-        auto tmp = lst | views::transform(f0);
-        vector<string> vs = vector<string>(tmp.begin(), tmp.end());
+        vector<string> vs = lst | views::transform(f0) | ranges::to<vector<string>>();
         return "[" + ranges::fold_left(vs | views::join_with(", "sv), string(), plus()) + "]";
     };
 }
@@ -60,9 +55,7 @@ function<string(const vector<V>&)> p_e_list(function<string(const V&)> f0) {
 template <typename V>
 function<string(const vector<V>&)> p_e_ulist(function<string(const V&)> f0) {
     return [f0 = move(f0)](const vector<V>& lst) -> string {
-        // vector<string> vs = lst | views::transform(f0) | ranges::to<vector<string>>();
-        auto tmp = lst | views::transform(f0);
-        vector<string> vs = vector<string>(tmp.begin(), tmp.end());
+        vector<string> vs = lst | views::transform(f0) | ranges::to<vector<string>>();
         ranges::sort(vs);
         return "[" + ranges::fold_left(vs | views::join_with(", "sv), string(), plus()) + "]";
     };
@@ -72,9 +65,7 @@ template <typename V>
 function<string(const unordered_map<int, V>&)> p_e_idict(function<string(const V&)> f0) {
     function<string(pair<int, V>)> f1 = [f0 = move(f0)](auto kv){return p_e_int()(kv.first) + "=>" + f0(kv.second); };
     return [f1 = move(f1)](const unordered_map<int, V>& dct) -> string {
-        // vector<string> vs = dct | views::transform(f1) | ranges::to<vector<string>>();
-        auto tmp = dct | views::transform(f1);
-        vector<string> vs = vector<string>(tmp.begin(), tmp.end());
+        vector<string> vs = dct | views::transform(f1) | ranges::to<vector<string>>();
         ranges::sort(vs);
         return "{" + ranges::fold_left(vs | views::join_with(", "sv), string(), plus()) + "}";
     };
@@ -84,9 +75,7 @@ template <typename V>
 function<string(const unordered_map<string, V>&)> p_e_sdict(function<string(const V&)> f0) {
     function<string(pair<string, V>)> f1 = [f0 = move(f0)](auto kv){return p_e_string()(kv.first) + "=>" + f0(kv.second); };
     return [f1 = move(f1)](const unordered_map<string, V>& dct) -> string {
-        // vector<string> vs = dct | views::transform(f1) | ranges::to<vector<string>>();
-        auto tmp = dct | views::transform(f1);
-        vector<string> vs = vector<string>(tmp.begin(), tmp.end());
+        vector<string> vs = dct | views::transform(f1) | ranges::to<vector<string>>();
         ranges::sort(vs);
         return "{" + ranges::fold_left(vs | views::join_with(", "sv), string(), plus()) + "}";
     };

@@ -1,8 +1,8 @@
 let
-  nixpkgs = fetchTarball "https://github.com/NixOS/nixpkgs/tarball/nixos-unstable";
+  nixpkgs = fetchTarball "https://github.com/NixOS/nixpkgs/tarball/nixos-24.05";
   pkgs = import nixpkgs { config = {}; overlays = []; };
 in
-pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
+pkgs.mkShell.override { stdenv = pkgs.llvmPackages_18.libcxxStdenv; } {
   buildInputs = [
     # Common Dependencies
     pkgs.cacert
@@ -14,7 +14,7 @@ pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
     pkgs.dotnet-sdk_8
     
     # C++
-    pkgs.gcc13
+    pkgs.gcc14
 
     # Go
     pkgs.go
@@ -22,8 +22,8 @@ pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
     # Java
     pkgs.jdk22
 
-    # JavaScript, PureScript, ReScript
-    pkgs.nodejs_21 pkgs.nodePackages.pnpm
+    # JavaScript
+    pkgs.nodejs_22 pkgs.nodePackages.pnpm
 
     # PHP
     pkgs.php83
@@ -45,7 +45,7 @@ pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
     pkgs.elixir
 
     # Groovy
-    pkgs.groovy
+    (pkgs.groovy.override { jdk = pkgs.jdk19; })
 
     # Kotlin
     pkgs.kotlin
