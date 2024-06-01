@@ -82,19 +82,19 @@ pkgs.mkShell.override { stdenv = pkgs.llvmPackages_18.libcxxStdenv; } {
     pkgs.elmPackages.elm
 
     # Erlang
-    pkgs.erlang_26
+    pkgs.erlang_27
 
     # Hack
     (builtins.getFlake "git+https://github.com/facebook/hhvm.git?submodules=1&shallow=1&ref=refs/tags/HHVM-4.172.1").packages.x86_64-linux.default
 
     # Haskell
-    pkgs.haskell.compiler.ghc98
+    pkgs.haskell.compiler.ghc910
 
     # Julia
     pkgs.julia
 
     # Lua
-    pkgs.lua5_4_compat
+    pkgs.lua54Packages.lua
 
     # Nim
     pkgs.nim
@@ -106,6 +106,6 @@ pkgs.mkShell.override { stdenv = pkgs.llvmPackages_18.libcxxStdenv; } {
     pkgs.purescript
 
     # Racket
-    pkgs.racket-minimal
+    pkgs.racket
   ];
 }
