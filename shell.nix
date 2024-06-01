@@ -1,8 +1,8 @@
 let
-  nixpkgs = fetchTarball "https://github.com/NixOS/nixpkgs/tarball/nixos-unstable";
+  nixpkgs = fetchTarball "https://github.com/NixOS/nixpkgs/tarball/nixos-24.05";
   pkgs = import nixpkgs { config = {}; overlays = []; };
 in
-pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
+pkgs.mkShell.override { stdenv = pkgs.llvmPackages_18.libcxxStdenv; } {
   buildInputs = [
     # Common Dependencies
     pkgs.cacert
@@ -14,7 +14,7 @@ pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
     pkgs.dotnet-sdk_8
     
     # C++
-    pkgs.gcc13
+    pkgs.gcc14
 
     # Go
     pkgs.go
@@ -22,8 +22,8 @@ pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
     # Java
     pkgs.jdk22
 
-    # JavaScript, PureScript, ReScript
-    pkgs.nodejs_21 pkgs.nodePackages.pnpm
+    # JavaScript
+    pkgs.nodejs_22 pkgs.nodePackages.pnpm
 
     # PHP
     pkgs.php83
@@ -45,7 +45,7 @@ pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
     pkgs.elixir
 
     # Groovy
-    pkgs.groovy
+    (pkgs.groovy.override { jdk = pkgs.jdk19; })
 
     # Kotlin
     pkgs.kotlin
@@ -82,19 +82,19 @@ pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
     pkgs.elmPackages.elm
 
     # Erlang
-    pkgs.erlang_26
+    pkgs.erlang_27
 
     # Hack
     (builtins.getFlake "git+https://github.com/facebook/hhvm.git?submodules=1&shallow=1&ref=refs/tags/HHVM-4.172.1").packages.x86_64-linux.default
 
     # Haskell
-    pkgs.haskell.compiler.ghc98
+    pkgs.haskell.compiler.ghc910
 
     # Julia
     pkgs.julia
 
     # Lua
-    pkgs.lua5_4_compat
+    pkgs.lua54Packages.lua
 
     # Nim
     pkgs.nim
@@ -106,7 +106,7 @@ pkgs.mkShell.override { stdenv = pkgs.libcxxStdenv; } {
     pkgs.purescript
 
     # Racket
-    pkgs.racket-minimal
+    pkgs.racket
 
 
     # Common Lisp
