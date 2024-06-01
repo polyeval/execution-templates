@@ -45,7 +45,7 @@ pkgs.mkShell.override { stdenv = pkgs.llvmPackages_18.libcxxStdenv; } {
     pkgs.elixir
 
     # Groovy
-    pkgs.groovy
+    (pkgs.groovy.override { jdk = pkgs.jdk19; })
 
     # Kotlin
     pkgs.kotlin
